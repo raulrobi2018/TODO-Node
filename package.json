@@ -1,0 +1,23 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Node TODO list app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raulrobi2018/TODO-Node.git"
+  },
+  "author": "Raul Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raulrobi2018/TODO-Node/issues"
+  },
+  "homepage": "https://github.com/raulrobi2018/TODO-Node#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "yargs": "^16.2.0"
+  }
+}
