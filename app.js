@@ -1,10 +1,12 @@
-const argv = require("./config/yargs");
+const argv = require("./config/yargs").argv;
+const toDo = require("./to-do/to-do");
 
 let comando = argv._[0];
 
 switch (comando) {
     case "create":
-        console.log("Create TODO");
+        let todo = toDo.create(argv.description);
+        console.log(todo);
         break;
     case "list":
         console.log("List all the TODO pending");
