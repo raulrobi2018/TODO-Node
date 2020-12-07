@@ -1,7 +1,5 @@
 const argv = require("./config/yargs");
 
-console.log(argv);
-
 let comando = argv._[0];
 
 switch (comando) {

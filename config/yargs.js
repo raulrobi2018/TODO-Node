@@ -1,18 +1,24 @@
-const opts = {
-    base: {
-        demand: true,
-        alias: "b"
-    },
-    limite: {
-        alias: "l",
-        default: 10
-    }
-};
-
 const argv = require("yargs")
-    .command("create", "Creates a new list of TODO's", opts)
-    .command("list", "Lists all of the task to do", opts)
-    .command("update", "Update the list of TODO's", opts)
+    .command("create", "Creates a new list of TODO's", {
+        description: {
+            demand: true,
+            alias: "d",
+            desc: "Description of the tasks TODO"
+        }
+    })
+    .command("list", "Lists all of the task to do", {
+        description: {
+            demand: true,
+            alias: "d",
+            desc: "Description of the tasks TODO"
+        },
+        complete: {
+            alias: "c",
+            default: true,
+            desc: "Sets the task as complete"
+        }
+    })
+    // .command("update", "Update the list of TODO's", opts)
     .help().argv;
 
 module.exports = {
