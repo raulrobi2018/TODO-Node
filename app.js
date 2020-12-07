@@ -6,7 +6,6 @@ let comando = argv._[0];
 switch (comando) {
     case "create":
         let todo = toDo.create(argv.description);
-        console.log(todo);
         break;
     case "list":
         console.log("List all the TODO pending");
