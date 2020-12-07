@@ -42,7 +42,7 @@ const getList = () => {
 
 const updateTodo = (description, completeState) => {
     loadDB();
-    let index = toDoList.findIndex(todo => todo.description === description);
+    let index = toDoList.findIndex((todo) => todo.description === description);
 
     if (index >= 0) {
         toDoList[index].complete = completeState;
@@ -51,10 +51,24 @@ const updateTodo = (description, completeState) => {
     } else {
         return false;
     }
-}
+};
+
+const deleteTodo = (description) => {
+    loadDB();
+    let index = toDoList.findIndex((todo) => todo.description === description);
+
+    if (index >= 0) {
+        toDoList.splice(index, 1);
+        saveDB();
+        return true;
+    } else {
+        return false;
+    }
+};
 
 module.exports = {
     create,
     getList,
-    updateTodo
+    updateTodo,
+    deleteTodo
 };

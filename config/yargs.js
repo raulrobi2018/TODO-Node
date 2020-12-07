@@ -35,6 +35,13 @@ const argv = require("yargs")
             desc: "Sets the task as complete"
         }
     })
+    .command("delete", "Deletes a todo from the list", {
+        description: {
+            demand: true,
+            alias: "d",
+            desc: "Description of the todo to delete"
+        }
+    })
     .help().argv;
 
 module.exports = {
