@@ -22,7 +22,8 @@ const argv = require("yargs")
             desc: "Description of the tasks TODO"
         }
     })
-    .command("list", "Lists all of the task to do", {
+    .command("list", "Lists all of the task to do")
+    .command("update", "Update the list of TODO's", {
         description: {
             demand: true,
             alias: "d",
@@ -34,7 +35,6 @@ const argv = require("yargs")
             desc: "Sets the task as complete"
         }
     })
-    // .command("update", "Update the list of TODO's", opts)
     .help().argv;
 
 module.exports = {

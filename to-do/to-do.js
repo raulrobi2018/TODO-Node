@@ -35,12 +35,26 @@ const create = (description) => {
     return toDo;
 };
 
-const getListado = () => {
+const getList = () => {
     loadDB();
     return toDoList;
+};
+
+const updateTodo = (description, completeState) => {
+    loadDB();
+    let index = toDoList.findIndex(todo => todo.description === description);
+
+    if (index >= 0) {
+        toDoList[index].complete = completeState;
+        saveDB();
+        return true;
+    } else {
+        return false;
+    }
 }
 
 module.exports = {
     create,
-    getListado
+    getList,
+    updateTodo
 };

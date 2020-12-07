@@ -10,8 +10,7 @@ switch (comando) {
         let todo = toDo.create(argv.description);
         break;
     case "list":
-        let list = toDo.getListado();
-        console.log(list);
+        let list = toDo.getList();
         for (let todo of list) {
             console.log('==========TODO List==========='.green);
             console.log(todo.description);
@@ -20,7 +19,7 @@ switch (comando) {
         }
         break;
     case "update":
-        console.log("Update all the TODO pending");
+        let updated = toDo.updateTodo(argv.description, argv.complete);
         break;
     default:
         console("The command is not valid");
