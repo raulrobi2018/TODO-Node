@@ -1,46 +1,25 @@
-const optDesc = {
-    description: {
+const description = {
         demand: true,
         alias: "d",
         desc: "Description of the tasks TODO"
-    }
 };
 
-const optComplete = {
-    complete: {
+const complete = {
         alias: "c",
         default: true,
         desc: "Sets the task as complete"
-    }
 };
 
 const argv = require("yargs")
     .command("create", "Creates a new list of TODO's", {
-        description: {
-            demand: true,
-            alias: "d",
-            desc: "Description of the tasks TODO"
-        }
+        description
     })
     .command("list", "Lists all of the task to do")
     .command("update", "Update the list of TODO's", {
-        description: {
-            demand: true,
-            alias: "d",
-            desc: "Description of the tasks TODO"
-        },
-        complete: {
-            alias: "c",
-            default: true,
-            desc: "Sets the task as complete"
-        }
+        description, complete
     })
     .command("delete", "Deletes a todo from the list", {
-        description: {
-            demand: true,
-            alias: "d",
-            desc: "Description of the todo to delete"
-        }
+        description
     })
     .help().argv;
 
