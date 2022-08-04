@@ -1,8 +1,8 @@
 // const argv = require("./config/yargs").argv;
 // const toDo = require("./to-do/to-do");
 import colors from "colors";
-import {inquirerMenu} from "./helpers/inquirer.js";
-import {mostrarMenu, pausa} from "./mensajes.js";
+import {inquirerMenu, pausa} from "./helpers/inquirer.js";
+import {mostrarMenu} from "./mensajes.js";
 
 // let comando = argv._[0];
 
@@ -38,6 +38,7 @@ const main = async () => {
         //Esperamos a que tengamos resuelto el menú
         opt = await inquirerMenu();
         console.log({opt});
+        await pausa();
     } while (opt !== "7");
 };
 
