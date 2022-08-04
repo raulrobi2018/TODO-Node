@@ -2,7 +2,8 @@
   "name": "todo",
   "version": "1.0.0",
   "description": "Node TODO list app",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/raulrobi2018/TODO-Node#readme",
   "dependencies": {
     "colors": "^1.4.0",
+    "inquirer": "^9.0.2",
     "yargs": "^16.2.0"
   }
 }
