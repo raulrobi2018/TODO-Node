@@ -1,6 +1,6 @@
 import {v4 as uuidv4} from "uuid";
 
-export class Tarea {
+class Tarea {
     id = "";
     desc = "";
     completadaEn = null;
@@ -11,3 +11,5 @@ export class Tarea {
         this.completadaEn = null;
     }
 }
+
+export {Tarea};

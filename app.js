@@ -1,9 +1,8 @@
 // const argv = require("./config/yargs").argv;
 // const toDo = require("./to-do/to-do");
 import colors from "colors";
-import {inquirerMenu, pausa} from "./helpers/inquirer.js";
+import {inquirerMenu, leerInput, pausa} from "./helpers/inquirer.js";
 import {mostrarMenu} from "./mensajes.js";
-import {Tarea} from "./models/tarea.js";
 import {Tareas} from "./models/tareas.js";
 
 // let comando = argv._[0];
@@ -36,17 +35,29 @@ console.clear();
 
 const main = async () => {
     let opt = "";
+    const tareas = new Tareas();
+
     do {
         //Esperamos a que tengamos resuelto el menú
-        //opt = await inquirerMenu();
+        opt = await inquirerMenu();
         //console.log({opt});
 
-        const tarea = new Tarea("Comprar comida");
-        const tareas = new Tareas("");
+        switch (opt) {
+            case "1":
+                const desc = await leerInput("Descripción: ");
+                tareas.crearTarea(desc);
+                break;
+            case "2":
+                console.log(tareas._listado);
+                break;
 
-        tareas._listado[tarea.id] = tarea;
-        console.log(tarea);
-        await pausa();
+            default:
+                break;
+        }
+
+        if (opt !== "7") {
+            await pausa();
+        }
     } while (opt !== "7");
 };
 
