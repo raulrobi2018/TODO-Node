@@ -3,6 +3,8 @@
 import colors from "colors";
 import {inquirerMenu, pausa} from "./helpers/inquirer.js";
 import {mostrarMenu} from "./mensajes.js";
+import {Tarea} from "./models/tarea.js";
+import {Tareas} from "./models/tareas.js";
 
 // let comando = argv._[0];
 
@@ -36,8 +38,14 @@ const main = async () => {
     let opt = "";
     do {
         //Esperamos a que tengamos resuelto el menú
-        opt = await inquirerMenu();
-        console.log({opt});
+        //opt = await inquirerMenu();
+        //console.log({opt});
+
+        const tarea = new Tarea("Comprar comida");
+        const tareas = new Tareas("");
+
+        tareas._listado[tarea.id] = tarea;
+        console.log(tarea);
         await pausa();
     } while (opt !== "7");
 };
