@@ -19,6 +19,10 @@ class Tareas {
         const tarea = new Tarea(desc);
         this._listado[tarea.id] = tarea;
     }
+
+    get list() {
+        return Object.values(this._listado);
+    }
 }
 
 export {Tareas};
