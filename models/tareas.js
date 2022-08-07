@@ -7,6 +7,7 @@
  */
 
 import {Tarea} from "./tarea.js";
+import colors from "colors";
 
 class Tareas {
     _listado = {};
@@ -27,6 +28,17 @@ class Tareas {
     cargarTareasDesdeArray(tareas = []) {
         tareas.forEach((tarea) => {
             this._listado[tarea.id] = tarea;
+        });
+    }
+
+    listadoCompleto() {
+        this.list.forEach((tarea, index) => {
+            const {desc, completadaEn} = tarea;
+            console.log(
+                `${index + 1}. `.green +
+                    `${desc}`.white +
+                    ` -> ${completadaEn ? "Completada".blue : "Pendiente".red}`
+            );
         });
     }
 }

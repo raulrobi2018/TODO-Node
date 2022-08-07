@@ -26,16 +26,15 @@ const main = async () => {
             case "1":
                 const desc = await leerInput("Descripción: ");
                 tareas.crearTarea(desc);
+                guardarDB(JSON.stringify(tareas.list));
                 break;
             case "2":
-                console.log(tareas.list);
+                tareas.listadoCompleto();
                 break;
 
             default:
                 break;
         }
-
-        guardarDB(JSON.stringify(tareas.list));
 
         if (opt !== "7") {
             await pausa();
