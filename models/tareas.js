@@ -23,6 +23,12 @@ class Tareas {
     get list() {
         return Object.values(this._listado);
     }
+
+    cargarTareasDesdeArray(tareas = []) {
+        tareas.forEach((tarea) => {
+            this._listado[tarea.id] = tarea;
+        });
+    }
 }
 
 export {Tareas};

@@ -15,9 +15,8 @@ const main = async () => {
     const tareasDB = leerDB();
 
     if (tareasDB) {
+        tareas.cargarTareasDesdeArray(tareasDB);
     }
-
-    await pausa();
 
     do {
         //Esperamos a que tengamos resuelto el menú para imprimir en pantalla
@@ -36,7 +35,7 @@ const main = async () => {
                 break;
         }
 
-        //guardarDB(JSON.stringify(tareas.list));
+        guardarDB(JSON.stringify(tareas.list));
 
         if (opt !== "7") {
             await pausa();
