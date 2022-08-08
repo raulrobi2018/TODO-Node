@@ -46,25 +46,34 @@ class Tareas {
             ) {
                 console.log("No hay tareas pendientes".white);
             } else {
-                this.list.forEach((tarea, index) => {
-                    const {desc, completadaEn} = tarea;
-
-                    console.log(
-                        completada === null
-                            ? `${index + 1}. `.green +
-                                  `${desc}`.white +
-                                  ` -> ${
-                                      completadaEn
-                                          ? "Completada".blue
-                                          : "Pendiente".red
-                                  }`
-                            : completada && completadaEn
-                            ? `${index + 1}. `.green + `${desc}`.white
-                            : !completada && !completadaEn
-                            ? `${index + 1}. `.red + `${desc}`.white
-                            : ""
-                    );
-                });
+                let index = 1;
+                if (completada === null) {
+                    this.list.forEach((t, index) => {
+                        console.log(
+                            `${index + 1}. `.green +
+                                `${t.desc}`.white +
+                                ` -> ${
+                                    t.completadaEn
+                                        ? "Completada".blue
+                                        : "Pendiente".red
+                                }`
+                        );
+                    });
+                } else if (!completada) {
+                    this.list.forEach((t) => {
+                        if (!t.completadaEn) {
+                            console.log(`${index}. `.red + `${t.desc}`.white);
+                            index++;
+                        }
+                    });
+                } else if (completada) {
+                    this.list.forEach((t) => {
+                        if (t.completadaEn) {
+                            console.log(`${index}. `.green + `${t.desc}`.white);
+                            index++;
+                        }
+                    });
+                }
             }
         }
     }
@@ -74,6 +83,21 @@ class Tareas {
             delete this._listado[id];
             console.log("Tarea borrada correctamente");
         }
+    }
+
+    toggleCompletadas(ids = []) {
+        ids.forEach((id) => {
+            const tarea = this._listado[id];
+            if (!tarea.completadaEn) {
+                tarea.completadaEn = new Date().toISOString();
+            }
+        });
+
+        this.list.forEach((t) => {
+            if (!ids.includes(t.id)) {
+                this._listado[t.id].completadaEn = null;
+            }
+        });
     }
 }
 

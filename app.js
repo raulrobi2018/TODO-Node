@@ -45,7 +45,9 @@ const main = async () => {
                 tareas.listadoCompleto(false);
                 break;
             case "5":
-                await mostrarListadoChecklist(tareas.list);
+                tareas.toggleCompletadas(
+                    await mostrarListadoChecklist(tareas.list)
+                );
                 break;
             case "6":
                 if (tareas.list.length === 0) {
