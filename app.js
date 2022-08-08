@@ -3,6 +3,7 @@
 import colors from "colors";
 import {guardarDB, leerDB} from "./helpers/guardarArchivo.js";
 import {
+    confirmar,
     inquirerMenu,
     leerInput,
     listadoTareasBorrar,
@@ -43,8 +44,20 @@ const main = async () => {
                 tareas.listadoCompleto(false);
                 break;
             case "6":
-                const id = await listadoTareasBorrar(tareas.list);
-                console.log(id);
+                if (tareas.list.length === 0) {
+                    console.log("No hay tareas cargadas");
+                } else {
+                    const id = await listadoTareasBorrar(tareas.list);
+
+                    //Si el id es 0 es porque cancela
+                    if (id !== "0") {
+                        const borrarSiNo = await confirmar(
+                            "Está seguro de querer borrar?"
+                        );
+
+                        borrarSiNo && tareas.borrarTarea(id);
+                    }
+                }
                 break;
 
             default:
