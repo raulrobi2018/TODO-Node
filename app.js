@@ -29,7 +29,13 @@ const main = async () => {
                 guardarDB(JSON.stringify(tareas.list));
                 break;
             case "2":
-                tareas.listadoCompleto();
+                tareas.listadoCompleto(null);
+                break;
+            case "3":
+                tareas.listadoCompleto(true);
+                break;
+            case "4":
+                tareas.listadoCompleto(false);
                 break;
 
             default:

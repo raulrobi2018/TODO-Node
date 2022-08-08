@@ -31,15 +31,42 @@ class Tareas {
         });
     }
 
-    listadoCompleto() {
-        this.list.forEach((tarea, index) => {
-            const {desc, completadaEn} = tarea;
-            console.log(
-                `${index + 1}. `.green +
-                    `${desc}`.white +
-                    ` -> ${completadaEn ? "Completada".blue : "Pendiente".red}`
-            );
-        });
+    listadoCompleto(completada) {
+        if (this.list.length === 0) {
+            console.log("No hay tareas cargadas".white);
+        } else {
+            if (
+                completada &&
+                this.list.filter((t) => t.completadaEn).length === 0
+            ) {
+                console.log("No hay tareas completadas".white);
+            } else if (
+                !completada &&
+                this.list.filter((t) => !t.completadaEn).length === 0
+            ) {
+                console.log("No hay tareas pendientes".white);
+            } else {
+                this.list.forEach((tarea, index) => {
+                    const {desc, completadaEn} = tarea;
+
+                    console.log(
+                        completada === null
+                            ? `${index + 1}. `.green +
+                                  `${desc}`.white +
+                                  ` -> ${
+                                      completadaEn
+                                          ? "Completada".blue
+                                          : "Pendiente".red
+                                  }`
+                            : completada && completadaEn
+                            ? `${index + 1}. `.green + `${desc}`.white
+                            : !completada && !completadaEn
+                            ? `${index + 1}. `.red + `${desc}`.white
+                            : ""
+                    );
+                });
+            }
+        }
     }
 }
 
