@@ -7,6 +7,7 @@ import {
     inquirerMenu,
     leerInput,
     listadoTareasBorrar,
+    mostrarListadoChecklist,
     pausa
 } from "./helpers/inquirer.js";
 import {mostrarMenu} from "./mensajes.js";
@@ -43,6 +44,9 @@ const main = async () => {
             case "4":
                 tareas.listadoCompleto(false);
                 break;
+            case "5":
+                await mostrarListadoChecklist(tareas.list);
+                break;
             case "6":
                 if (tareas.list.length === 0) {
                     console.log("No hay tareas cargadas");
@@ -59,7 +63,6 @@ const main = async () => {
                     }
                 }
                 break;
-
             default:
                 break;
         }
