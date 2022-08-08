@@ -2,7 +2,12 @@
 // const toDo = require("./to-do/to-do");
 import colors from "colors";
 import {guardarDB, leerDB} from "./helpers/guardarArchivo.js";
-import {inquirerMenu, leerInput, pausa} from "./helpers/inquirer.js";
+import {
+    inquirerMenu,
+    leerInput,
+    listadoTareasBorrar,
+    pausa
+} from "./helpers/inquirer.js";
 import {mostrarMenu} from "./mensajes.js";
 import {Tareas} from "./models/tareas.js";
 
@@ -36,6 +41,10 @@ const main = async () => {
                 break;
             case "4":
                 tareas.listadoCompleto(false);
+                break;
+            case "6":
+                const id = await listadoTareasBorrar(tareas.list);
+                console.log(id);
                 break;
 
             default:
